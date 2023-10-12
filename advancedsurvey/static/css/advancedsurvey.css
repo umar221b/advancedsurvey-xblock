@@ -1,0 +1,35 @@
+/* CSS for AdvancedSurveyXBlock */
+
+.advancedsurvey_block .rate-question {
+    overflow-x: scroll;
+}
+
+.advancedsurvey_block .question {
+    margin-bottom: 16px;
+}
+
+.advancedsurvey_block td, .advancedsurvey_block th {
+    padding: 16px;
+    border-bottom: 1px dotted black;
+}
+
+.advancedsurvey_block .block {
+    margin-top: 40px;
+}
+
+.advancedsurvey_block .required-question {
+    color: red;
+    font-weight: bold;
+}
+
+.advancedsurvey-hidden {
+    display: none;
+}
+
+.advancedsurvey_block textarea {
+    height: auto;
+}
+
+.advancedsurvey_block .advancedsurvey-header {
+    text-transform: uppercase;
+}

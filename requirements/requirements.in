@@ -1,0 +1,6 @@
+# Core requirements for using this application
+-c constraints.txt
+
+-e git+https://github.com/openedx/xblock-utils.git@2.2.0#egg=xblock-utils
+
+edx-i18n-tools

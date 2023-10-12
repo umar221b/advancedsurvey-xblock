@@ -1,0 +1,141 @@
+# translation file.
+# Copyright (C) 2023 @umar221b
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# Umar Alkafaween <omar.ka923@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1a\n"
+"Report-Msgid-Bugs-To: omar.ka923@gmail.com\n"
+"POT-Creation-Date: 2023-06-13 08:00+0000\n"
+"PO-Revision-Date: 2023-06-13 09:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Umar Alkafaween <omar.ka923@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: advancedsurvey.py:192
+msgid "Advanced Survey"
+msgstr ""
+
+#: advancedsurvey.py:194
+msgid "The maximum number of times a user may submit the survey."
+msgstr ""
+
+#: advancedsurvey.py:196
+msgid "Number of times the user has submitted the survey."
+msgstr ""
+
+#: advancedsurvey.py:198
+msgid "Text to display after the user submits the survey."
+msgstr ""
+
+#: advancedsurvey.py:208
+msgid "Questions for this Survey"
+msgstr ""
+
+#: advancedsurvey.py:211
+msgid "The user's answers"
+msgstr ""
+
+#: advancedsurvey.py:340
+msgid "You have already answered this survey."
+msgstr ""
+
+#: advancedsurvey.py:349
+msgid ""
+"You have already answered this survey as many times as you are allowed to."
+msgstr ""
+
+#: advancedsurvey.py:364 advancedsurvey.py:372
+msgid "You did not answer all required questions."
+msgstr ""
+
+#: advancedsurvey.py:400
+msgid "You must add questions."
+msgstr ""
+
+#: static/html/advancedsurvey.html:54
+msgid "Submit"
+msgstr ""
+
+#: static/html/advancedsurvey.html:56
+msgid "The submit button will appear here in the LMS."
+msgstr ""
+
+#: static/html/advancedsurvey.html:63
+msgid "Export results to CSV"
+msgstr ""
+
+#: static/html/advancedsurvey.html:64
+msgid "Download CSV"
+msgstr ""
+
+#: static/html/advancedsurvey.html:68
+msgid "Student data and results CSV will be available for download in the LMS."
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:8
+msgid "Display Name"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:13
+msgid "Questions"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:19
+msgid "Uses a specific formatting. Check example to know the supported keys."
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:23
+msgid "Feedback"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:29
+msgid "This text will be displayed for the user as feedback after they have submitted their response to the survey."
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:34
+msgid "Maximum Submissions"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:39
+msgid ""
+"\n"
+"                    Maximum number of times a user may submit the survey. Setting it to 0 will allow infinite resubmissions.\n"
+"                "
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:45
+msgid "Notes:"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:47
+msgid ""
+"\n"
+"                    If you change an answer's text, all students who voted for that choice will have their votes updated to\n"
+"                    the new text. You'll want to avoid changing an answer from something like 'True' to 'False', accordingly.\n"
+"                    If you delete an answer, any votes for that answer will also be deleted. Students whose choices are deleted\n"
+"                    may vote again, but will not lose course progress.\n"
+"                "
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:55
+msgid ""
+"\n"
+"                    Questions must be similarly cared for. If a question's text is changed, any votes for that question will remain.\n"
+"                    If a question is deleted, any student who previously took the survey will be permitted to retake it, but will not\n"
+"                    lose course progress.\n"
+"                "
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:66
+msgid "Save"
+msgstr ""
+
+#: static/html/advancedsurvey_edit.html:69
+msgid "Cancel"
+msgstr ""

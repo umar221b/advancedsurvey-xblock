@@ -1,0 +1,71 @@
+{% load i18n %}
+{{ js_template|safe }}
+<div class="advancedsurvey_block" data-can-submit="{% if can_submit %}1{% endif %}">
+    <h3 class="advancedsurvey-header">{{block_name}}</h3>
+    <form id="{{block_id}}-{{usage_id}}">
+        {% for question in questions %}
+            {% if 'header' in question and not forloop.first %}
+                </div>
+            {% endif %}
+            {% if forloop.first or 'header' in question %}
+                <div class="block">
+            {% endif %}
+            {% if 'header' in question %}
+                <h2>{{question.header|safe}}</h2>
+            {% endif %}
+            {% if question.type == 'rate' %}
+                <div id="q-{{question.question_id}}-div" class="question rate-question">
+                    <table>
+                        <tr>
+                            <th></th>
+                            {% for option_id, option in question.options %}
+                                <th>{{option|safe}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for prompt_id, prompt in question.prompts %}
+                            <tr>
+                                <td>{{prompt|safe}}</td>
+                                {% for option_id, option in question.options %}
+                                    {% with q_id='q-'|add_str:question.question_id|add_str:'-p-'|add_str:prompt_id %}
+                                        <th><input type="radio" id="q-{{question.question_id}}-p-{{prompt_id}}-o-{{option_id}}" value="o-{{option_id}}" name="q-{{question.question_id}}-p-{{prompt_id}}" {% if answers|get_item:q_id == 'o-'|add_str:option_id %} checked {% endif %}></th>
+                                    {% endwith %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% elif question.type == 'free' %}
+                <div id="q-{{question.question_id}}-div" class="question free-question">
+                    <p>
+                        {{question.prompt|safe}}
+                        {% if question|get_item:'required'  %}
+                            <span class="required-question">*</span>
+                        {% endif %}
+                    </p>
+                    {% with q_id='q-'|add_str:question.question_id %}
+                        <textarea id="{{q_id}}" name="{{q_id}}" placeholder="Type your answer here.." cols="70" rows="10" {% if question|get_item:'required' %} required="required" {% endif %}>{% if answers|get_item:q_id %}{{answers|get_item:q_id}}{% endif %}</textarea>
+                    {% endwith %}
+                </div>
+            {% endif %}
+            {% if forloop.last  %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if not studio_edit %}
+            <input type="button" name="submit" value="{% trans 'Submit' %}" disabled/>
+        {% else %}
+            <p>{% trans "The submit button will appear here in the LMS." %}</p>
+        {% endif %}
+    </form>
+</div>
+{% if can_view_results %}
+  {% if not studio_edit %}
+    <div class="export-results-button-wrapper">
+      <button class="export-results-button">{% trans "Export results to CSV" %}</button>
+      <button disabled class="download-results-button">{% trans "Download CSV" %}</button>
+      <p class="error-message advancedsurvey-hidden"></p>
+    </div>
+  {% else %}
+    <p>{% trans "Student data and results CSV will be available for download in the LMS." %}</p>
+  {% endif %}
+{% endif %}

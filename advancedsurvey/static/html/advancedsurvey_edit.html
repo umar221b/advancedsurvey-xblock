@@ -1,0 +1,74 @@
+{% load i18n %}
+{{js_template|safe}}
+<div class="wrapper-comp-settings is-active editor-with-buttons" id="settings-tab">
+    <form id="advancedsurvey-form">
+    <ul class="list-input settings-list" id="advancedsurvey-line-items">
+        <li class="field comp-setting-entry is-set">
+            <div class="wrapper-comp-setting">
+                <label class="label setting-label advancedsurvey-setting-label" for="advancedsurvey-block-name">{% trans 'Display Name' %}</label>
+                <input class="input setting-input" name="block_name" id="advancedsurvey-block-name" value="{{ block_name }}" type="text" />
+            </div>
+        </li>
+        <li class="field comp-setting-entry is-set">
+            <h2><label for="advancedsurvey-questions-editor">{% trans 'Questions' %}</label></h2>
+            <div id="advancedsurvey-questions-editor-container" class="editor-container">
+                <textarea class="input setting-input editor" name="questions" id="advancedsurvey-questions-editor"
+                          aria-describedby="advancedsurvey-questions-editor-help">{{questions}}</textarea>
+            </div>
+            <span class="tip setting-help" id="advancedsurvey-questions-editor-help">
+                {% trans 'Uses a specific formatting. Check example to know the supported keys.' %}
+            </span>
+        </li>
+        <li class="field comp-setting-entry is-set">
+            <h2><label for="advancedsurvey-feedback-editor">{% trans 'Feedback' %}</label></h2>
+            <div id="advancedsurvey-feedback-editor-container" class="editor-container">
+                <textarea class="input setting-input editor" name="feedback" id="advancedsurvey-feedback-editor"
+                          aria-describedby="advancedsurvey-feedback-editor-help">{{feedback}}</textarea>
+            </div>
+            <span class="tip setting-help" id="advancedsurvey-feedback-editor-help">
+                {% trans 'This text will be displayed for the user as feedback after they have submitted their response to the survey.' %}
+            </span>
+        </li>
+        <li class="field comp-setting-entry is-set">
+            <div class="wrapper-comp-setting">
+                <label class="label setting-label advancedsurvey-setting-label" for="advancedsurvey-max-submissions">{% trans 'Maximum Submissions' %}</label>
+                <input id="advancedsurvey-max-submissions" type="number" min="0" step="1" value="{{ max_submissions }}"
+                       aria-describedby="advancedsurvey-max-submissions-help"/>
+            </div>
+            <span class="tip setting-help" id="advancedsurvey-max-submissions-help">
+                {% blocktrans %}
+                    Maximum number of times a user may submit the survey. Setting it to 0 will allow infinite resubmissions.
+                {% endblocktrans %}
+            </span>
+        </li>
+        <li class="field comp-setting-entry is-set">
+            <p><strong>{% trans 'Notes:' %}</strong></p>
+            <p>
+                {% blocktrans %}
+                    If you change an answer's text, all students who voted for that choice will have their votes updated to
+                    the new text. You'll want to avoid changing an answer from something like 'True' to 'False', accordingly.
+                    If you delete an answer, any votes for that answer will also be deleted. Students whose choices are deleted
+                    may vote again, but will not lose course progress.
+                {% endblocktrans %}
+            </p>
+            <p>
+                {% blocktrans %}
+                    Questions must be similarly cared for. If a question's text is changed, any votes for that question will remain.
+                    If a question is deleted, any student who previously took the survey will be permitted to retake it, but will not
+                    lose course progress.
+                {% endblocktrans %}
+            </p>
+        </li>
+    </ul>
+    <div class="xblock-actions">
+        <ul>
+            <li class="action-item">
+                <input id="advancedsurvey-submit-options" type="button" class="button action-primary save-button" value="{% trans 'Save' %}" />
+            </li>
+            <li class="action-item">
+                <a href="#" class="button cancel-button">{% trans 'Cancel' %}</a>
+            </li>
+        </ul>
+    </div>
+    </form>
+</div>
