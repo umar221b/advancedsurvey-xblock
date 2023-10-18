@@ -53,6 +53,9 @@
         {% endfor %}
         {% if not studio_edit %}
             <input type="button" name="submit" value="{% trans 'Submit' %}" disabled/>
+            <p id="submit-feedback" class="{% if can_submit %}advancedsurvey-hidden{% endif %}">
+                {{feedback}}
+            </p>
         {% else %}
             <p>{% trans "The submit button will appear here in the LMS." %}</p>
         {% endif %}

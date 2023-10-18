@@ -33,3 +33,7 @@
 .advancedsurvey_block .advancedsurvey-header {
     text-transform: uppercase;
 }
+
+.advancedsurvey_block #submit-feedback {
+    margin-top: 1rem;
+}

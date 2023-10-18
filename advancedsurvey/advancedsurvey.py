@@ -286,7 +286,8 @@ class AdvancedSurveyXBlock(XBlock, ResourceMixin, PublishEventMixin, CSVExportMi
             'usage_id': six.text_type(self.scope_ids.usage_id),
             'can_submit': self.can_submit(),
             'can_view_results': self.can_view_results(),
-            'block_name': self.block_name
+            'block_name': self.block_name,
+            'feedback': self.feedback
         })
 
         return self.create_fragment(

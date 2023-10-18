@@ -53,6 +53,7 @@ function AdvancedSurveyXBlock(runtime, element) {
         this.downloadResultsButton.click(this.downloadCsv);
 
         this.errorMessage = $('.error-message', element);
+        this.feedback = $('#submit-feedback', element);
 
         this.radios = $('input[type=radio]', element);
         this.textAreas = $('textarea', element);
@@ -129,6 +130,8 @@ function AdvancedSurveyXBlock(runtime, element) {
             // Enable the submit button.
             self.enableSubmit();
         }
+        if (data['success'])
+            self.feedback.removeClass("advancedsurvey-hidden");
         return;
     };
 
