@@ -44,17 +44,26 @@ function AdvancedSurveyXBlock(runtime, element) {
         this.submitUrl = runtime.handlerUrl(element, 'submit');
         this.csv_url= runtime.handlerUrl(element, 'csv_export');
 
-        // If the user is unable to vote, disable input.
-        if (! $('div.advancedsurvey_block', element).data('can-submit')) {
-            $('input', element).attr('disabled', true);
-            $('textarea', element).attr('disabled', true);
-            self.disableSubmit();
-            return
-        }
+        this.submit = $('input[type=button]', element);
+        
+        this.exportResultsButton = $('.export-results-button', element);
+        this.exportResultsButton.click(this.exportCsv);
+
+        this.downloadResultsButton = $('.download-results-button', element);
+        this.downloadResultsButton.click(this.downloadCsv);
+
+        this.errorMessage = $('.error-message', element);
 
         this.radios = $('input[type=radio]', element);
         this.textAreas = $('textarea', element);
-        this.submit = $('input[type=button]', element);
+
+        // If the user is unable to vote, disable input.
+        if (! $('div.advancedsurvey_block', element).data('can-submit')) {
+            this.radios.attr('disabled', true);
+            this.textAreas.attr('disabled', true);
+            self.disableSubmit();
+            return
+        }
         
         self.radios.bind("change.verifySubmittable", self.verifySubmittable);
         self.textAreas.bind("input.verifySubmittable", debounce(() => self.verifySubmittable()));
@@ -69,14 +78,6 @@ function AdvancedSurveyXBlock(runtime, element) {
                 success: self.onSubmit
             })
         });
-
-        this.exportResultsButton = $('.export-results-button', element);
-        this.exportResultsButton.click(this.exportCsv);
-
-        this.downloadResultsButton = $('.download-results-button', element);
-        this.downloadResultsButton.click(this.downloadCsv);
-
-        this.errorMessage = $('.error-message', element);
 
         // If the user has refreshed the page, they may still have an answer
         // selected and the submit button should be enabled.

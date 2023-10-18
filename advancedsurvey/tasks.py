@@ -1,14 +1,14 @@
 from __future__ import absolute_import
 import time
 
-from celery import current_app  # pylint: disable=import-error
+from celery import shared_task
 
 from lms.djangoapps.instructor_task.models import ReportStore  # pylint: disable=import-error
 from opaque_keys.edx.keys import CourseKey, UsageKey  # pylint: disable=import-error
 from xmodule.modulestore.django import modulestore  # pylint: disable=import-error
 
 
-@current_app.task(name='poll.tasks.export_csv_data')
+@shared_task
 def export_csv_data(block_id, course_id):
     """
     Exports student answers to all supported questions to a CSV file.
